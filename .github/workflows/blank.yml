@@ -34,7 +34,9 @@ jobs:
                 result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
 
                 # Ghi kết quả vào file2.txt
-                echo "$result" >> "$output_file"
+                if [[ ! $result == *"html"* ]]; then
+                    echo "$result" >> "$output_file"
+                fi
             done < "$file"
         else
             echo "Tệp $file không tồn tại."
