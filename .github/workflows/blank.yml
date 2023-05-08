@@ -44,10 +44,19 @@ jobs:
                     fi
                 fi
             done < "$file"
-            wget -O clash "https://convert.v2ray-subscribe.workers.dev/?url=$(cat $output_file)&flag=clash"
         else
             echo "Tệp $file không tồn tại."
         fi
+    - name: Commit files v2ray
+      run: |
+        git config --local user.email "tuananh88c25@gmail.com"
+        git config --local user.name "sattheptonghop"
+        git add v2ray
+        git commit --allow-empty -m "Add changes"
+    - name: Get clash
+      run: |
+        wget -O clash "https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&flag=clash"
+        
     - name: Edit clash
       run: |
         #sed -i 's/select,/select,/p' clash
@@ -64,7 +73,7 @@ jobs:
         git config --local user.email "tuananh88c25@gmail.com"
         git config --local user.name "sattheptonghop"
         git add clash #--all
-        git add v2ray
+        #git add v2ray
         git commit --allow-empty -m "Add changes"
     - name: Push changes
       uses: ad-m/github-push-action@master
