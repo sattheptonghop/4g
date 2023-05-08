@@ -15,7 +15,28 @@ jobs:
     - name: Create local changes
       run: |
         rm clash
-        wget -O clash 'https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&sni=dl.kgvn.garenanow.com&flag=clash'
+        wget -O clash 'https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&q=dl.kgvn.garenanow.com&flag=clash'
+    - name: Create v2ray2
+      run: |
+        # Đường dẫn đến file.txt
+        file="v2ray"
+
+        # Tên file để lưu kết quả
+        output_file="v2ray2"
+
+        # Kiểm tra xem tệp tồn tại
+        if [ -f "$file" ]; then
+            # Mở tệp và đọc từng dòng
+            while IFS= read -r line; do
+                url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
+                result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
+
+                # Ghi kết quả vào file2.txt
+                echo "$result" >> "$output_file"
+            done < "$file"
+        else
+            echo "Tệp $file không tồn tại."
+        fi
     - name: Edit clash
       run: |
         #sed -i 's/select,/select,/p' clash
