@@ -15,7 +15,7 @@ jobs:
     - name: Create local changes
       run: |
         rm clash
-        wget -O clash 'https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&q=dl.kgvn.garenanow.com&flag=clash'
+        #wget -O clash 'https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&q=dl.kgvn.garenanow.com&flag=clash'
     - name: Create v2ray2
       run: |
         set -x
@@ -44,6 +44,7 @@ jobs:
                     fi
                 fi
             done < "$file"
+            wget -O clash "https://convert.v2ray-subscribe.workers.dev/?url=$(cat $output_file)&flag=clash"
         else
             echo "Tệp $file không tồn tại."
         fi
