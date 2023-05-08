@@ -30,14 +30,17 @@ jobs:
         if [ -f "$file" ]; then
             # Mở tệp và đọc từng dòng
             while IFS= read -r line; do
-                url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
-                result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
+                # Kiểm tra nếu $line chứa chuỗi "http"
+                if [[ $line == *"http"* ]]; then
+                    url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
+                    result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
 
-                # Kiểm tra nếu $result không rỗng
-                if [ -n "$result" ]; then
-                    # Kiểm tra nếu $result không chứa chuỗi "html"
-                    if [[ ! $result == *"html"* ]]; then
-                        echo "$result" >> "$output_file"
+                    # Kiểm tra nếu $result không rỗng
+                    if [ -n "$result" ]; then
+                        # Kiểm tra nếu $result không chứa chuỗi "html"
+                        if [[ ! $result == *"html"* ]]; then
+                            echo "$result" >> "$output_file"
+                        fi
                     fi
                 fi
             done < "$file"
