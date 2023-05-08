@@ -63,6 +63,7 @@ jobs:
         git config --local user.email "tuananh88c25@gmail.com"
         git config --local user.name "sattheptonghop"
         git add clash #--all
+        git add v2ray2
         git commit --allow-empty -m "Add changes"
     - name: Push changes
       uses: ad-m/github-push-action@master
