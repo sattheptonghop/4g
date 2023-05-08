@@ -33,9 +33,12 @@ jobs:
                 url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
                 result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
 
-                # Ghi kết quả vào file2.txt
-                if [[ ! $result == *"html"* ]]; then
-                    echo "$result" >> "$output_file"
+                # Kiểm tra nếu $result không rỗng
+                if [ -n "$result" ]; then
+                    # Kiểm tra nếu $result không chứa chuỗi "html"
+                    if [[ ! $result == *"html"* ]]; then
+                        echo "$result" >> "$output_file"
+                    fi
                 fi
             done < "$file"
         else
