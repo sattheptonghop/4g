@@ -31,7 +31,7 @@ jobs:
             # Mở tệp và đọc từng dòng
             while IFS= read -r line; do
                 # Kiểm tra nếu $line chứa chuỗi "http"
-                if [[ $line == *"http"* ]]; then
+                if [[ $line == "http"* ]]; then
                     url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
                     result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
 
