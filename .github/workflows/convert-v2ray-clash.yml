@@ -1,4 +1,4 @@
-name: Auto update clash
+name: Auto convert v2ray clash
 on:
     workflow_dispatch:
     schedule:
@@ -12,10 +12,6 @@ jobs:
     #  with:
     #    persist-credentials: false
     #    fetch-depth: 0
-    - name: Create local changes
-      run: |
-        rm clash
-        #wget -O clash 'https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&q=dl.kgvn.garenanow.com&flag=clash'
     - name: Create v2ray2
       run: |
         set -x
@@ -32,7 +28,11 @@ jobs:
             while IFS= read -r line; do
                 # Kiểm tra nếu $line chứa chuỗi "http"
                 if [[ $line == "http"* ]]; then
-                    url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
+                    if [[ $line == "https://convert.v2ray-subscribe.workers.dev/?url="* ]]; then
+                        url=$line
+                    else
+                        url="https://convert.v2ray-subscribe.workers.dev/?url=$line"
+                    fi
                     result=$(curl -s "$url")   # Truy cập và lấy nội dung từ trang web
 
                     # Kiểm tra nếu $result không rỗng
@@ -55,8 +55,8 @@ jobs:
         git commit --allow-empty -m "Add changes"
     - name: Get clash
       run: |
+        rm clash
         wget -O clash "https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&flag=clash"
-        
     - name: Edit clash
       run: |
         #sed -i 's/select,/select,/p' clash
