@@ -23,7 +23,8 @@ jobs:
 
         # Tên file để lưu kết quả
         output_file="v2ray2"
-
+        rm -f "$output_file"
+        
         # Kiểm tra xem tệp tồn tại
         if [ -f "$file" ]; then
             # Mở tệp và đọc từng dòng
