@@ -18,6 +18,7 @@ jobs:
         wget -O clash 'https://convert.v2ray-subscribe.workers.dev/?url=https://raw.githubusercontent.com/sattheptonghop/4g/main/v2ray&q=dl.kgvn.garenanow.com&flag=clash'
     - name: Create v2ray2
       run: |
+        set -x
         # Đường dẫn đến file.txt
         file="v2ray"
 
