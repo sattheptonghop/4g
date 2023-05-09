@@ -15,7 +15,7 @@ jobs:
     #    fetch-depth: 0
     - name: Create v2ray2
       run: |
-        set -x
+        #set -x
         # Đường dẫn đến file.txt
         file="v2ray1"
 
