@@ -1,0 +1,55 @@
+name: regnew
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */1 * * *"
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repo
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Installed package list
+        run: apt list --installed
+      #- name: Installed xvfb
+      #  run: |-
+      #    sudo apt-get install -y xvfb
+      #    export DISPLAY=:99
+      #    Xvfb :99 -screen 0 1024x768x16 > /dev/null 2>&1 &
+      #- name: Remove Chrome
+      #  run: sudo apt purge google-chrome-stable
+      #- name: Remove default Chromium
+      #  run: sudo apt purge chromium-browser
+      #- name: Install a new Chromium
+      #  run: |-
+      #    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      #    sudo apt install ./google-chrome-stable_current_amd64.deb
+      #    rm ./google-chrome-stable_current_amd64.deb
+      #    echo sudo apt install -y chromium-browser
+      - name: Install all necessary packages
+        run: |-
+          pip install --upgrade pip
+          #pip install beautifulsoup4 pandas
+          pip install webdriver-manager selenium
+          #pip install chromedriver-binary
+          pip install pytest requests
+      - name: Run trumpro 4pnme
+        run: |-
+          python trumpro.py
+          python 4pnme.py
+      - name: Run tltvpncom.py
+        run: |-
+          echo "Thu nghiem"
+          echo python tltvpncom.py
+      - name: Commit and push if content changed
+        run: |-
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          timestamp=$(date -u)
+          git commit -m "Latest data: ${timestamp}" || exit 0
+          git push
