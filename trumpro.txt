@@ -1,4 +1,3 @@
-https://trumvpn.pro/api/v1/client/subscribe?token=7d8b35be3b8f9261fabd755f7251edf4
 https://trumvpn.pro/api/v1/client/subscribe?token=6211d5934be9e4254f709a67435efd45
 https://trumvpn.pro/api/v1/client/subscribe?token=63ccd50ea3e1cc7230364422732b8726
 https://trumvpn.pro/api/v1/client/subscribe?token=9611deaf59af8929c5b442e8bf7c5a0b
@@ -9,3 +8,4 @@ https://trumvpn.pro/api/v1/client/subscribe?token=fa8beaefe0eda35e1ad86c284d5d9f
 https://trumvpn.pro/api/v1/client/subscribe?token=f23fafc7e7a79502fd76743fd4869709
 https://trumvpn.pro/api/v1/client/subscribe?token=e1ac94b3ade51b6fa56d9edc4411b0a0
 https://trumvpn.pro/api/v1/client/subscribe?token=9da59ab28c154587e5d113c82ef0a4d5
+https://trumvpn.pro/api/v1/client/subscribe?token=726e8e9c42abc34ad1cf12e76aae8cd4
