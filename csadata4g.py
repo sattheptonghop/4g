@@ -60,13 +60,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	except:
 		pass
 	# 4 | click | linkText=Đăng ký | 
-	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
-		print('Trang dang nhap')
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys(iemail.get_attribute("value"))
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("@gmail.com")
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-		driver.find_element(By.CSS_SELECTOR, ".btn").click()
-			
+
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
 		print("dang o trang dang ky")
 		print(driver.current_url)
@@ -172,6 +166,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		break
 	else:
 		iLoop = iLoop + 1
+	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
+		print('Trang dang nhap')
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys(iemail.get_attribute("value"))
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("@gmail.com")
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
+		driver.find_element(By.CSS_SELECTOR, ".btn").click()
+			
 if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
 
