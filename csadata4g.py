@@ -66,7 +66,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print(driver.current_url)
 
 		try:
-			time.sleep(1)
+			#time.sleep(1)
 			iemail = driver.find_element(By.CSS_SELECTOR, ".v2board-email-whitelist-enable > .form-control:nth-child(1)")
 			ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 			ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
@@ -133,6 +133,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				for element in elements:
 				    print(element.get_attribute('outerHTML'))
 				pass
+			time.sleep(10)
 			print('Ket thuc an nut dang ky')
 		#wait = WebDriverWait(driver, 10)
 		#wait.until(lambda driver: driver.execute_script('return document.readyState') == 'complete')
@@ -156,11 +157,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		iLoop = iLoop + 1
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print('Trang dang nhap')
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").clear()
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys(ticket)
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("@gmail.com")
-		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-		driver.find_element(By.CSS_SELECTOR, ".btn").click()
+		lemail = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+		lpass = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+		lemail.clear()
+		lemail.send_keys(ticket)
+		lemail.send_keys("@gmail.com")
+		lpass.send_keys("63668890")
+		blogin = driver.find_element(By.CSS_SELECTOR, ".btn")
+		driver.execute_script("arguments[0].click();", blogin)
 			
 if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
