@@ -189,13 +189,15 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		element = driver.find_element(By.CSS_SELECTOR, ".v2board-shortcuts-item:nth-child(2) > .description")
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
-		element.click()
-		time.sleep(1)
+		driver.execute_script("arguments[0].click();", element)
+		#element.click()
+		time.sleep(3)
 		#driver.execute_script("window.scrollTo(0,306)")
 		element = driver.find_element(By.CSS_SELECTOR, ".subscribe-for-qrcode > div:nth-child(2)")
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
-		element.click()
+		driver.execute_script("arguments[0].click();", element)
+		#element.click()
 		time.sleep(3)
 		
 		# Đợi cho phần tử canvas xuất hiện
