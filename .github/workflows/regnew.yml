@@ -38,6 +38,7 @@ jobs:
           #pip install chromedriver-binary
           pip install pytest requests
           pip install pyzbar
+          pip install opencv-python
      # - name: Run trumpro 4pnme
      #   run: |-
           #python trumpro.py
