@@ -162,7 +162,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		lemail.clear()
 		lemail.send_keys(ticket)
 		lemail.send_keys("@gmail.com")
+		time.sleep(10)
 		lpass.send_keys("63668890")
+		time.sleep(10)
 		blogin = driver.find_element(By.CSS_SELECTOR, ".btn")
 		driver.execute_script("arguments[0].click();", blogin)
 			
