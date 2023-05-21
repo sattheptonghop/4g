@@ -195,7 +195,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
 		#driver.execute_script("window.scrollTo(0,306)")
-		driver.find_element(By.CSS_SELECTOR, ".v2board-shortcuts-item:nth-child(2) > div:nth-child(1)").click()
+		driver.find_element(By.CSS_SELECTOR, ".subscribe-for-qrcode > div:nth-child(2)").click()
 		driver.save_screenshot("pic/csadata4g" + str(iLoop) + "1clash.png")
 		
 		# Đợi cho phần tử canvas xuất hiện
