@@ -147,15 +147,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print(e)
 			driver.save_screenshot("pic/csadata4g" + str(iLoop) + "kci.png")
 			pass
-		##print("Bat dau Chuyển lai iframe")
-		##print(driver.current_url)
-		##try:
-		##	print("Chuyển lai iframe")
-		##	driver.switch_to.default_content()
-		##except:
-		##	print("Ko Chuyển lai iframe dc")
-		##	pass
-		##print(driver.current_url)
+
 	if iLoop == 3:
 		break
 	else:
@@ -197,8 +189,13 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
 		element.click()
+		time.sleep(1)
 		#driver.execute_script("window.scrollTo(0,306)")
-		driver.find_element(By.CSS_SELECTOR, ".subscribe-for-qrcode > div:nth-child(2)").click()
+		element = driver.find_element(By.CSS_SELECTOR, ".subscribe-for-qrcode > div:nth-child(2)")
+		actions = ActionChains(driver)
+		actions.move_to_element(element).perform()
+		element.click()
+		time.sleep(1)
 		driver.save_screenshot("pic/csadata4g" + str(iLoop) + "1clash.png")
 		
 		# Đợi cho phần tử canvas xuất hiện
