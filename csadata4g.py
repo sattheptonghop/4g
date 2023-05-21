@@ -97,7 +97,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					oemail = iemail.get_attribute("value")
 					iemail.clear()
 					#iemail.send_keys(oemail.split("@")[0])
-          iemail.send_keys(oemail)
+					iemail.send_keys(oemail)
 					iemail.send_keys("1")
 					#iemail.send_keys("@gmail.com")
 					print(iemail.get_attribute("value"))
