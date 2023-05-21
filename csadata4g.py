@@ -43,6 +43,9 @@ mobile_emulation = {
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 #driver = webdriver.Chrome(executable_path=chromedriver_binary_path, service=chrome_service, options=chrome_options)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+# Tạo thư mục pic nếu nó chưa tồn tại
+if not os.path.exists(pic_dir):
+    os.makedirs(pic_dir)
 
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
@@ -194,6 +197,16 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		#driver.execute_script("window.scrollTo(0,306)")
 		driver.find_element(By.CSS_SELECTOR, ".v2board-shortcuts-item:nth-child(2) > div:nth-child(1)").click()
 		driver.save_screenshot("pic/csadata4g" + str(iLoop) + "1clash.png")
+		
+		# Đợi cho phần tử canvas xuất hiện
+		canvas_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "canvas")))
+		# Lưu hình ảnh của canvas
+		driver.save_screenshot(f"pic/screenshot.png")
+		crop_area = (canvas_element.location['x'], canvas_element.location['y'], canvas_element.location['x'] + canvas_element.size['width'], canvas_element.location['y'] + canvas_element.size['height'])
+		image = Image.open(f"pic/screenshot.png")
+		image = image.crop(crop_area)
+		image.save(f"pic/qrcode.png")
+		
 		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
 		element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".clash-for > div:nth-child(2)")))
 		url = element.get_attribute("href")
