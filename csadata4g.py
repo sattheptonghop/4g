@@ -188,7 +188,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	##driver.refresh()
 	try:
 		driver.save_screenshot("pic/csadata4g" + str(iLoop) + "clash.png")
-		element = driver.find_element(By.CSS_SELECTOR, ".btn")
+		element = driver.find_element(By.CSS_SELECTOR, ".v2board-shortcuts-item:nth-child(2) > div:nth-child(1)")
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
 		#driver.execute_script("window.scrollTo(0,306)")
@@ -196,6 +196,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
 		element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".clash-for > div:nth-child(2)")))
 		url = element.get_attribute("href")
+		print(url)
 		result = "https://convert.v2ray-subscribe.workers.dev/?url=" + url.split("url=")[1].split("&name=")[0]
 		print("result=")
 		print(result)
