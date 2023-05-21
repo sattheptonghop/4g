@@ -158,7 +158,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print('Trang dang nhap')
 		lemail = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-		lpass = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+		lpass = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 		lemail.clear()
 		lemail.send_keys(ticket)
 		lemail.send_keys("@gmail.com")
