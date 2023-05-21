@@ -6,6 +6,7 @@ import json
 import re
 import requests
 import cv2
+from PIL import Image
 from pyzbar import pyzbar
 from urllib.parse import urlparse
 from selenium import webdriver
@@ -196,7 +197,6 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		actions.move_to_element(element).perform()
 		element.click()
 		time.sleep(1)
-		driver.save_screenshot("pic/csadata4g" + str(iLoop) + "1clash.png")
 		
 		# Đợi cho phần tử canvas xuất hiện
 		canvas_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "canvas")))
