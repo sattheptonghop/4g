@@ -157,17 +157,21 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		iLoop = iLoop + 1
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print('Trang dang nhap')
-		lemail = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-		lpass = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
-		lemail.clear()
-		lemail.send_keys(ticket)
-		lemail.send_keys("@gmail.com")
-		time.sleep(1)
-		lpass.send_keys("63668890")
-		time.sleep(1)
-		#blogin = driver.find_element(By.CSS_SELECTOR, ".btn")
-		blogin = driver.find_element(By.XPATH, "//button[contains(.,\'Đăng nhập\')]")
-		driver.execute_script("arguments[0].click();", blogin)
+		try:
+			lemail = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+			lpass = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+			lemail.clear()
+			lemail.send_keys(ticket)
+			lemail.send_keys("@gmail.com")
+			time.sleep(1)
+			lpass.send_keys("63668890")
+			time.sleep(1)
+			#blogin = driver.find_element(By.CSS_SELECTOR, ".btn")
+			blogin = driver.find_element(By.XPATH, "//button[contains(.,\'Đăng nhập\')]")
+			blogin.click()
+			#driver.execute_script("arguments[0].click();", blogin)
+		except Exception as e:
+			print(e)
 			
 if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
