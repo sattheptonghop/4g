@@ -147,30 +147,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			driver.save_screenshot("pic/csadata4g" + str(iLoop) + "tandk.png")
 			print('Bat dau an nut dang ky')
 			try:
-				##print("Bat dau Chuyển iframe")
-				##print(driver.current_url)
-				##try:
-				##	print("Chuyển sang iframe")
-				##	iframe = driver.find_element(By.XPATH, '//iframe[2]')
-				##	driver.switch_to.frame(iframe)
-				##except:
-				##	print("Ko Chuyển sang iframe dc")
-				##	pass
 				try:
-					#driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)").click()
-					driver.find_element(By.xpath, "//main[@id='main-container']/div[2]/div/div/div/div/div/div/div[2]/div[5]/button/span").click()
+					element = driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)")
+					driver.execute_script("arguments[0].click();", element)
 				except TimeoutException:
 					print('Không tìm thấy button dang ky')
-					try:
-						driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)").click()
-					except TimeoutException:
-						print('Không tìm thấy button dang ky')
-					except Exception as ex:
-						print('Lỗi:', ex)
 				except Exception as ex:
 					print('Lỗi:', ex)
 
-				#driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except Exception as e:
