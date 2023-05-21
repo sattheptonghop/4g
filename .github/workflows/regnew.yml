@@ -39,6 +39,7 @@ jobs:
           pip install pytest requests
           pip install pyzbar
           pip install opencv-python
+          pip install pillow
           sudo apt-get install libzbar0
 
      # - name: Run trumpro 4pnme
