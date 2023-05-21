@@ -61,23 +61,11 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		pass
 	# 4 | click | linkText=Đăng ký | 
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
-		print(driver.current_url)
-		print('Thu chuyen toi trang dang ky')
-		driver.save_screenshot("pic/csadata4g" + str(iLoop) + "tcttdk.png")
-		try:
-			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			element = driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div/div/div[2]/div/form/div[2]/p/a[2]")
-			element.click()
-			#driver.execute_script("arguments[0].click();", element)
-			print('an dang ky')
-		except Exception as e:
-			#ko duoc
-			#driver.close
-			#driver.get("https://tnetz.pro/#/register")
-			print('ko an duoc nut dang ky, thu chay bang link')
-			print(e)
-			pass
-		time.sleep(1)
+		print('Trang dang nhap')
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys(iemail.get_attribute("value"))
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("@gmail.com")
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
+		driver.find_element(By.CSS_SELECTOR, ".btn").click()
 			
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
 		print("dang o trang dang ky")
@@ -184,12 +172,6 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		break
 	else:
 		iLoop = iLoop + 1
-if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
-	print('Trang dang nhap')
-	driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys(iemail.get_attribute("value"))
-	driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("@gmail.com")
-	driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-	driver.find_element(By.CSS_SELECTOR, ".btn").click()
 if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
 
