@@ -40,7 +40,7 @@ for option in options:
     chrome_options.add_argument(option)
 
 mobile_emulation = {
-    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
+    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 1.0 },
     "userAgent": "Mozilla/5.0 (Android 12; Mobile; LG-M255; rv:100.0) Gecko/100.0 Firefox/100.0Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
@@ -196,7 +196,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
 		element.click()
-		time.sleep(1)
+		time.sleep(3)
 		
 		# Đợi cho phần tử canvas xuất hiện
 		canvas_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "canvas")))
@@ -207,15 +207,16 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		image = image.crop(crop_area)
 		image.save(f"pic/qrcode.png")
 		# Giải mã QR code
-		decoded_objects = pyzbar.decode(image)
+		decoded_objects = pyzbar.decode(f"pic/screenshot.png")
 
 		# Lấy nội dung từ QR code
 		for obj in decoded_objects:
 		    data = obj.data.decode("utf-8")
 		    print("QR Code content:", data)
 		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
-		element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".clash-for > div:nth-child(2)")))
-		url = element.get_attribute("href")
+		#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".clash-for > div:nth-child(2)")))
+		#url = element.get_attribute("href")
+		url = data
 		print(url)
 		result = "https://convert.v2ray-subscribe.workers.dev/?url=" + url.split("url=")[1].split("&name=")[0]
 		print("result=")
