@@ -111,18 +111,6 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print("loi khi nhap email, pass")
 					print(e)
 					pass
-
-			#print("Bat dau an nut dong y dieu khoan")
-			#try:
-			#	if driver.execute_script("return (document.querySelector(\"#signup-terms\").checked != true)"):
-			#		element = driver.find_element(By.CSS_SELECTOR, "#signup-terms")
-			#		driver.execute_script("arguments[0].click();", element)
-			#		#element.send_keys(Keys.TAB)
-			#		#element.send_keys(Keys.RETURN)
-			#except Exception as e:
-			#	print(e)
-			#	pass
-			#print("Ket thuc an nut dong y dieu khoan")
 			
 			driver.save_screenshot("pic/csadata4g" + str(iLoop) + "tandk.png")
 			print('Bat dau an nut dang ky')
@@ -168,6 +156,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		iLoop = iLoop + 1
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print('Trang dang nhap')
+		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").clear()
 		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys(ticket)
 		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("@gmail.com")
 		driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
