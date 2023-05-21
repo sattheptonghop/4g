@@ -209,7 +209,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		image = image.crop(crop_area)
 		image.save(f"pic/qrcode.png")
 		# Giải mã QR code
-		decoded_objects = pyzbar.decode(f"pic/qrcode.png")
+		decoded_objects = pyzbar.decode(image)
 
 		# Lấy nội dung từ QR code
 		for obj in decoded_objects:
