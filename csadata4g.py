@@ -157,13 +157,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				##	print("Ko Chuyển sang iframe dc")
 				##	pass
 				try:
-					driver.find_element(By.XPATH, "//span[contains(.,\'Đăng ký\')]").click()
+					driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)"").click()
+					driver.find_element(By.xpath, "//main[@id='main-container']/div[2]/div/div/div/div/div/div/div[2]/div[5]/button/span").click()
 				except TimeoutException:
 					print('Không tìm thấy button dang ky')
 					try:
-						driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)").click()
+						driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)"").click()
 					except TimeoutException:
-						print('Không tìm thấy button có class là "span:nth-child(1)"')
+						print('Không tìm thấy button dang ky')
 					except Exception as ex:
 						print('Lỗi:', ex)
 				except Exception as ex:
