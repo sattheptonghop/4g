@@ -5,6 +5,8 @@ import time
 import json
 import re
 import requests
+import cv2
+from pyzbar import pyzbar
 from urllib.parse import urlparse
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -44,8 +46,8 @@ chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 #driver = webdriver.Chrome(executable_path=chromedriver_binary_path, service=chrome_service, options=chrome_options)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # Tạo thư mục pic nếu nó chưa tồn tại
-if not os.path.exists(pic_dir):
-    os.makedirs(pic_dir)
+if not os.path.exists("pic"):
+    os.makedirs("pic")
 
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
@@ -206,7 +208,13 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		image = Image.open(f"pic/screenshot.png")
 		image = image.crop(crop_area)
 		image.save(f"pic/qrcode.png")
-		
+		# Giải mã QR code
+		decoded_objects = pyzbar.decode(image)
+
+		# Lấy nội dung từ QR code
+		for obj in decoded_objects:
+		    data = obj.data.decode("utf-8")
+		    print("QR Code content:", data)
 		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
 		element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".clash-for > div:nth-child(2)")))
 		url = element.get_attribute("href")
