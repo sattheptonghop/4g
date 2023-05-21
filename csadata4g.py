@@ -40,7 +40,7 @@ for option in options:
     chrome_options.add_argument(option)
 
 mobile_emulation = {
-    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 1.0 },
+    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
     "userAgent": "Mozilla/5.0 (Android 12; Mobile; LG-M255; rv:100.0) Gecko/100.0 Firefox/100.0Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
@@ -204,7 +204,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		canvas_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "canvas")))
 		# Lưu hình ảnh của canvas
 		driver.save_screenshot(f"pic/screenshot.png")
-		crop_area = (canvas_element.location['x'], canvas_element.location['y'] - canvas_element.size['height']/2 - 4, canvas_element.location['x'] + canvas_element.size['width'], canvas_element.location['y'] + canvas_element.size['height']/2 -4)
+		crop_area = (canvas_element.location['x']*3, (canvas_element.location['y'] - canvas_element.size['height']/2 - 4)*3, (canvas_element.location['x'] + canvas_element.size['width'])*3, (canvas_element.location['y'] + canvas_element.size['height']/2 -4)*3)
 		image = Image.open(f"pic/screenshot.png")
 		image = image.crop(crop_area)
 		image.save(f"pic/qrcode.png")
