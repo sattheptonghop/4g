@@ -88,10 +88,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			iemail = driver.find_element(By.CSS_SELECTOR, ".v2board-email-whitelist-enable > .form-control:nth-child(1)")
 			ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 			ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
-			#iemail = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='input-group']/input[@class='form-control form-control-lg form-control-alt']")))
-			#ipass1 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='py-3']/div[2]/input[@class='form-control form-control-lg form-control-alt']")))
-			#ipass2 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[3]/input[@class='form-control form-control-lg form-control-alt']")))
-			#driver.implicitly_wait(3)
+			icode = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(4) > .form-control")
 			if iemail.get_attribute("value"):
 				print('sua lai email')
 				try:
@@ -118,6 +115,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					ipass1.send_keys("63668890")
 					ipass2.click()
 					ipass2.send_keys("63668890")
+					icode.send_keys("FqNAr2Mo")
 					print('nhập xong')
 					print(iemail.get_attribute("value"))
 					try:
