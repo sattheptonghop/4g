@@ -51,6 +51,7 @@ driver.get("https://csadata4g.me/#/register")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
+driver.save_screenshot("pic/csadata4g" + str(iLoop) + "test.png")
 while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
@@ -156,13 +157,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				##	print("Ko Chuyển sang iframe dc")
 				##	pass
 				try:
-					driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)").click()
+					driver.find_element(By.XPATH, "//span[contains(.,\'Đăng ký\')]").click()
 				except TimeoutException:
-					print('Không tìm thấy button có class là "span:nth-child(1)"')
+					print('Không tìm thấy button dang ky')
 					try:
-						driver.find_element(By.CSS_SELECTOR, ".fa-fw").click()
+						driver.find_element(By.CSS_SELECTOR, "span:nth-child(1)").click()
 					except TimeoutException:
-						print('Không tìm thấy button có class là ".fa-fw"')
+						print('Không tìm thấy button có class là "span:nth-child(1)"')
 					except Exception as ex:
 						print('Lỗi:', ex)
 				except Exception as ex:
@@ -273,6 +274,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 
 	
 # Đóng trình duyệt web
+print('Kết thúc chương trình')
 driver.save_screenshot("pic/csadata4g10.png")
 driver.close()
 driver.quit()
