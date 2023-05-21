@@ -166,8 +166,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			time.sleep(1)
 			lpass.send_keys("63668890")
 			time.sleep(1)
-			#blogin = driver.find_element(By.CSS_SELECTOR, ".btn")
-			blogin = driver.find_element(By.XPATH, "//button[contains(.,\'Đăng nhập\')]")
+			blogin = driver.find_element(By.CSS_SELECTOR, ".btn")
 			blogin.click()
 			#driver.execute_script("arguments[0].click();", blogin)
 		except Exception as e:
