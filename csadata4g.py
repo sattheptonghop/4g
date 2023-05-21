@@ -202,12 +202,12 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		canvas_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "canvas")))
 		# Lưu hình ảnh của canvas
 		driver.save_screenshot(f"pic/screenshot.png")
-		crop_area = (canvas_element.location['x'], canvas_element.location['y'] + canvas_element.size['height']/2, canvas_element.location['x'] + canvas_element.size['width'], canvas_element.location['y'] + canvas_element.size['height'])
+		crop_area = (canvas_element.location['x'], canvas_element.location['y'] - canvas_element.size['height']/2, canvas_element.location['x'] + canvas_element.size['width'], canvas_element.location['y'] + canvas_element.size['height']/2)
 		image = Image.open(f"pic/screenshot.png")
 		image = image.crop(crop_area)
 		image.save(f"pic/qrcode.png")
 		# Giải mã QR code
-		decoded_objects = pyzbar.decode(f"pic/screenshot.png")
+		decoded_objects = pyzbar.decode(image)
 
 		# Lấy nội dung từ QR code
 		for obj in decoded_objects:
