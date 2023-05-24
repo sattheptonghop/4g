@@ -3,4 +3,4 @@ https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/clien
 https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/9a3093093c0343f102724279611296da
 https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/b3bbf4a87372cca6e21268ddffb31c45
 https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/5f2327511344d19c18b9e54162d48bd1
-https://convert.v2ray-subscribe.workers.dev/?url=https://csadata4g.me/api/v1/client/subscribe?token=e13d32c2246f23b02098ac0572accd37
+https://convert.v2ray-subscribe.workers.dev/?url=https://csadata4g.me/api/v1/client/subscribe?token=f2200595b6081469bbacf2bffa667860
