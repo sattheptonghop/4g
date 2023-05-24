@@ -219,8 +219,9 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".clash-for > div:nth-child(2)")))
 		#url = element.get_attribute("href")
 		url = data
-		print(url)
-		result = "https://convert.v2ray-subscribe.workers.dev/?url=" + url.split("url=")[1].split("&name=")[0]
+		#print(url)
+		result = "https://convert.v2ray-subscribe.workers.dev/?url=" + url
+		#.split("url=")[1].split("&name=")[0]
 		print("result=")
 		print(result)
 		
