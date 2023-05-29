@@ -1,6 +1,2 @@
-https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/0a13c00f66b37a90f7a2f743583019ea
-https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/d1447f7422d2e5450c21568956ede5fd
-https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/9a3093093c0343f102724279611296da
-https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/b3bbf4a87372cca6e21268ddffb31c45
-https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/5f2327511344d19c18b9e54162d48bd1
-https://convert.v2ray-subscribe.workers.dev/?url=https://csadata4g.me/api/v1/client/subscribe?token=ab674c92c5c909ee4833477808490b54
+https://csadata4g.me/api/v1/client/subscribe?token=4b976bf86fce6437b5b8a45ff609fb89
+https://csadata4g.me/api/v1/client/subscribe?token=74f98d580c79331f221cf9c3bcb59e1a
