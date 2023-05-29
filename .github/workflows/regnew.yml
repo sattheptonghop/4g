@@ -44,7 +44,7 @@ jobs:
 
       - name: Run trumpro 4pnme
         run: |-
-          python trumpro.py
+          echo python trumpro.py
           python 4pnme.py
       - name: Run Thu nghiem
         run: |-
