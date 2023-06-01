@@ -42,14 +42,9 @@ jobs:
           pip install pillow
           sudo apt-get install libzbar0
 
-      - name: Run trumpro 4pnme
+      - name: Run thu nghiem
         run: |-
-          echo python trumpro.py
-          python 4pnme.py
-      - name: Run Thu nghiem
-        run: |-
-          echo "Thu nghiem"
-          python csadata4g.py
+          python 5gtocdocaocom.py
       - name: Commit and push if content changed
         run: |-
           git config user.name "Automated"
